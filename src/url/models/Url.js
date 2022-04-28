@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const url = new Schema(
+const urlSchema = new Schema(
   {
     url: String,
     newUrl: String
@@ -17,7 +17,9 @@ const url = new Schema(
   }
 )
 
-const model = mongoose.model('Url', url)
+urlSchema.index({ newUrl: 1 })
+
+const model = mongoose.model('Url', urlSchema)
 
 export const schema = model.schema
 export default model

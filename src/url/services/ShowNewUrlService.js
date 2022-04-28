@@ -4,14 +4,14 @@ import { AppError } from '../../errors/AppError.js'
 export const ShowNewUrlService = async (code) => {
   try {
     const urlShorter = `${process.env.BASEURL}${code}`
-    const url = await Url.findOne({newUrl: urlShorter})
+    const url = await Url.findOne({ newUrl: urlShorter })
 
-    if(!url){
+    if (!url) {
       throw new AppError('Url not found!')
     }
 
     return url.url
-  }catch(err) {
+  } catch (err) {
     console.log(err)
   }
 }
